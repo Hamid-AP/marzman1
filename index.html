@@ -1,23 +1,32 @@
-
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
   <title>مرز من</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main>
-    <h1>اپلیکیشن مرز من</h1>
-    <section>
-      <h2>درباره برنامه</h2>
-      <p>
-        اپلیکیشن «مرز من» برای کمک به نوجوانان و خانواده‌ها طراحی شده تا به مدیریت بهتر احساسات، اضطراب و مرزهای شخصی کمک کنه. 
-        این برنامه با <span dir="ltr">HTML, CSS, JavaScript</span> ساخته شده.
-      </p>
-    </section>
-  </main>
+  <h1>اپلیکیشن مرز من</h1>
+  <p>بهت کمک می‌کنم مرزهای شخصی‌تو حفظ کنی و قوی‌تر بشی.</p>
+
+  <div class="friend-box">
+    <h3>دوست شنونده‌تو انتخاب کن:</h3>
+    <select id="friend-select">
+      <option value="jenabkhan.png">جناب‌خان</option>
+      <option value="kolahghermezi.png">کلاه قرمزی</option>
+      <option value="elsa.png">السا</option>
+      <option value="ladybug.png">دختر کفشدوزکی</option>
+    </select>
+    <img id="friend-image" src="jenabkhan.png" alt="دوست شنونده" />
+  </div>
+
+  <div class="encourage-box">
+    <h3>دلگرمی امروزت:</h3>
+    <p id="quote">تو خیلی باارزشی، حتی اگه دیگران نفهمن!</p>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
