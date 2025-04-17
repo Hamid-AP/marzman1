@@ -1,13 +1,16 @@
+
 {
   "name": "مرز من",
   "short_name": "مرز من",
-  "start_url": "index.html",
+  "start_url": ".",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "description": "اپی برای کمک به نوجوان‌ها در مدیریت مرزهای شخصی",
-  "icons": [{
-    "src": "icon.png",
-    "sizes": "192x192",
-    "type": "image/png"
-  }]
+  "background_color": "#f0f8ff",
+  "description": "اپلیکیشن کمکی برای نوجوانان در مدیریت مرزهای شخصی",
+  "icons": [
+    {
+      "src": "img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
 }

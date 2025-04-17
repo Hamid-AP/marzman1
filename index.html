@@ -1,32 +1,26 @@
+
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="style.css" />
-  <title>مرز من</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="style.css" />
+    <title>مرز من</title>
 </head>
 <body>
-  <h1>اپلیکیشن مرز من</h1>
-  <p>بهت کمک می‌کنم مرزهای شخصی‌تو حفظ کنی و قوی‌تر بشی.</p>
-
-  <div class="friend-box">
-    <h3>دوست شنونده‌تو انتخاب کن:</h3>
-    <select id="friend-select">
-      <option value="jenabkhan.png">جناب‌خان</option>
-      <option value="kolahghermezi.png">کلاه قرمزی</option>
-      <option value="elsa.png">السا</option>
-      <option value="ladybug.png">دختر کفشدوزکی</option>
-    </select>
-    <img id="friend-image" src="jenabkhan.png" alt="دوست شنونده" />
-  </div>
-
-  <div class="encourage-box">
-    <h3>دلگرمی امروزت:</h3>
-    <p id="quote">تو خیلی باارزشی، حتی اگه دیگران نفهمن!</p>
-  </div>
-
-  <script src="app.js"></script>
+    <div id="app">
+        <h1>سلام! به مرز من خوش اومدی</h1>
+        <p id="encouragement"></p>
+        <label for="listener">دوست شنونده‌ات رو انتخاب کن:</label>
+        <select id="listener">
+            <option value="jenabkhan">جناب‌خان</option>
+            <option value="kolahghermezi">کلاه‌قرمزی</option>
+            <option value="elsa">السا</option>
+            <option value="ladybug">دختر کفشدوزکی</option>
+        </select>
+        <img id="listener-img" src="img/jenabkhan.png" alt="دوست شنونده" />
+    </div>
+    <script src="main.js"></script>
 </body>
 </html>

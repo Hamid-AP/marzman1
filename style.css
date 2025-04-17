@@ -1,23 +1,13 @@
+
 body {
-  font-family: Tahoma, sans-serif;
-  direction: rtl;
-  padding: 2rem;
-  background-color: #fef9f5;
-  color: #333;
+    font-family: sans-serif;
+    direction: rtl;
+    text-align: center;
+    background-color: #f0f8ff;
+    padding: 20px;
 }
 
-.friend-box, .encourage-box {
-  margin-top: 2rem;
-  padding: 1rem;
-  border-radius: 1rem;
-  background-color: #fff0f5;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-img {
-  margin-top: 1rem;
-  width: 150px;
-  height: auto;
-  border-radius: 1rem;
+#listener-img {
+    width: 150px;
+    margin-top: 20px;
 }
