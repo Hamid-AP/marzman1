@@ -1,0 +1,17 @@
+
+body {
+  font-family: sans-serif;
+  direction: rtl;
+  background: #f0f4f8;
+  margin: 0;
+  padding: 2rem;
+}
+main {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+h1 {
+  color: #2b7a78;
+}
