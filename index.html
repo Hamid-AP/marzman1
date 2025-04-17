@@ -1,26 +1,24 @@
-
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="manifest" href="manifest.json" />
-    <link rel="stylesheet" href="style.css" />
-    <title>مرز من</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+  <title>مرز من</title>
 </head>
 <body>
-    <div id="app">
-        <h1>سلام! به مرز من خوش اومدی</h1>
-        <p id="encouragement"></p>
-        <label for="listener">دوست شنونده‌ات رو انتخاب کن:</label>
-        <select id="listener">
-            <option value="jenabkhan">جناب‌خان</option>
-            <option value="kolahghermezi">کلاه‌قرمزی</option>
-            <option value="elsa">السا</option>
-            <option value="ladybug">دختر کفشدوزکی</option>
-        </select>
-        <img id="listener-img" src="img/jenabkhan.png" alt="دوست شنونده" />
-    </div>
-    <script src="main.js"></script>
+  <h1>سلام! به مرز من خوش اومدی</h1>
+  <div id="listener-box">
+    <p>یه دوست شنونده انتخاب کن:</p>
+    <select id="listener-select">
+      <option value="jenabkhan">جناب‌خان</option>
+      <option value="kolahghermezi">کلاه‌قرمزی</option>
+      <option value="elsa">السا</option>
+      <option value="ladybug">دختر کفشدوزکی</option>
+    </select>
+    <div id="listener-image"></div>
+  </div>
+  <script src="app.js"></script>
 </body>
 </html>
