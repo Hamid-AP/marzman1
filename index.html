@@ -1,24 +1,41 @@
-<!DOCTYPE html>
-<html lang="fa">
+<!-- index.html --><!DOCTYPE html><html lang="fa">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="style.css" />
-  <title>مرز من</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مرز من - انتخاب دوست شنونده</title>
+  <style>
+    body {
+      font-family: tahoma, sans-serif;
+      text-align: center;
+      background-color: #fefefe;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    .character {
+      display: inline-block;
+      margin: 15px;
+      padding: 10px 20px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .character:hover {
+      background-color: #e0f7fa;
+      border-color: #00acc1;
+    }
+  </style>
 </head>
 <body>
   <h1>سلام! به مرز من خوش اومدی</h1>
-  <div id="listener-box">
-    <p>یه دوست شنونده انتخاب کن:</p>
-    <select id="listener-select">
-      <option value="jenabkhan">جناب‌خان</option>
-      <option value="kolahghermezi">کلاه‌قرمزی</option>
-      <option value="elsa">السا</option>
-      <option value="ladybug">دختر کفشدوزکی</option>
-    </select>
-    <div id="listener-image"></div>
+  <p>لطفاً یک دوست شنونده انتخاب کن:</p>
+  <div>
+    <a class="character" href="jenabkhan.html">جناب‌خان</a>
+    <a class="character" href="kolahghermezi.html">کلاه‌قرمزی</a>
+    <a class="character" href="elsa.html">السا</a>
+    <a class="character" href="ladybug.html">دختر کفشدوزکی</a>
   </div>
-  <script src="app.js"></script>
 </body>
 </html>
