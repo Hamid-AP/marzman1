@@ -3,10 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <title>دختر کفشدوزکی - مرز من</title>
+  <style>
+    body {
+      font-family: tahoma, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #fce4ec;
+    }
+    textarea {
+      width: 90%;
+      max-width: 400px;
+      height: 120px;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      margin-top: 10px;
+      resize: none;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 25px;
+      font-size: 16px;
+      border: none;
+      background-color: #d81b60;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .message {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #444;
+    }
+  </style>
 </head>
 <body>
   <h1>دوست شنونده تو: دختر کفشدوزکی!</h1>
-  <p>با دختر کفشدوزکی هم‌صحبت شو و اجازه بده ازت محافظت کنه.</p>
-  <a href="index.html">بازگشت به انتخاب شخصیت</a>
+  <p>بگو ببینم چی تو دلت هست؟</p>
+  <textarea id="feelingInput" placeholder="اینجا بنویس..."></textarea>
+  <br>
+  <button onclick="showMessage()">ثبت احساس</button>
+
+  <div class="message" id="responseMessage"></div>
+
+  <script>
+    function showMessage() {
+      const feeling = document.getElementById("feelingInput").value.trim();
+      const messageBox = document.getElementById("responseMessage");
+      if (feeling) {
+        messageBox.textContent = "تو قوی‌تر از چیزی هستی که فکر می‌کنی! من بهت ایمان دارم.";
+      } else {
+        messageBox.textContent = "احساست رو بنویس، با هم قوی‌تر می‌شیم!";
+      }
+    }
+  </script>
+
+  <p><a href="index.html">بازگشت به انتخاب شخصیت</a></p>
 </body>
 </html>
