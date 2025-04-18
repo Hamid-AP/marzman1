@@ -3,10 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <title>السا - مرز من</title>
+  <style>
+    body {
+      font-family: tahoma, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #e0f7fa;
+    }
+    textarea {
+      width: 90%;
+      max-width: 400px;
+      height: 120px;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      margin-top: 10px;
+      resize: none;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 25px;
+      font-size: 16px;
+      border: none;
+      background-color: #0288d1;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .message {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #444;
+    }
+  </style>
 </head>
 <body>
   <h1>دوست شنونده تو: السا!</h1>
-  <p>السا منتظره تا باهات صحبت کنه. احساست رو بهش بگو و با خیال راحت حرف بزن.</p>
-  <a href="index.html">بازگشت به انتخاب شخصیت</a>
+  <p>چی تو دلت داری؟ احساست رو بنویس:</p>
+  <textarea id="feelingInput" placeholder="اینجا بنویس..."></textarea>
+  <br>
+  <button onclick="showMessage()">ثبت احساس</button>
+
+  <div class="message" id="responseMessage"></div>
+
+  <script>
+    function showMessage() {
+      const feeling = document.getElementById("feelingInput").value.trim();
+      const messageBox = document.getElementById("responseMessage");
+      if (feeling) {
+        messageBox.textContent = "قدرت تو توی احساساته... بذارشون بیرون، سبک می‌شی!";
+      } else {
+        messageBox.textContent = "یه چیزی بنویس تا برات حرف بزنم!";
+      }
+    }
+  </script>
+
+  <p><a href="index.html">بازگشت به انتخاب شخصیت</a></p>
 </body>
 </html>
