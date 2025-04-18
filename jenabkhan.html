@@ -89,30 +89,30 @@
     <div class="message" id="message"></div>
   </div>
 
-  <script>
-    function handleFeeling() {
-      const input = document.getElementById("feelingInput").value.toLowerCase();
-      const messageBox = document.getElementById("message");
-      const balloon = document.getElementById("balloon");
+  <script> function handleFeeling() {
+  const inputRaw = document.getElementById("feelingInput").value;
+  const input = inputRaw.replace(/[^\u0600-\u06FF\s]/g, "").toLowerCase(); // حذف علامت‌ها و کوچک‌سازی
+  const messageBox = document.getElementById("message");
+  const balloon = document.getElementById("balloon");
 
-      let response = "همیشه کنارت هستم!";
+  let response = "همیشه کنارت هستم!";
 
-      if (input.includes("ناراحت") || input.includes("غم") || input.includes("گریه")) {
-        response = "می‌دونم سخته، ولی بدون همیشه یکی هست که دلش برات می‌تپه.";
-      } else if (input.includes("استرس") || input.includes("نگران") || input.includes("دلشوره")) {
-        response = "عمیق نفس بکش، همه‌چی درست میشه. من هستم کنارت!";
-      } else if (input.includes("عصبانی") || input.includes("اعصاب") || input.includes("حرص")) {
-        response = "بیا یه نفس بکش... بذار خشمت آروم بشه. من هواتو دارم.";
-      } else if (input.includes("تنها") || input.includes("کسی نیست")) {
-        response = "تو تنها نیستی، من همیشه هستم برای گوش دادن و دلگرمی.";
-      } else if (input.includes("خوشحال") || input.includes("ذوق") || input.includes("خندیدم")) {
-        response = "چه خوبه که خوشحالی! این حس رو بچسب و ادامه بده!";
-      } else if (input.includes("بی‌حال") || input.includes("بیحال") || input.includes("انگیزه")) {
-        response = "اگه یه کم استراحت کنی، انرژی برمی‌گرده. من بهت ایمان دارم.";
-      }
+  if (input.includes("ناراحت") || input.includes("غم") || input.includes("دلگیر") || input.includes("اشک") || input.includes("گریه")) {
+    response = "می‌دونم سخته، ولی بدون همیشه یکی هست که دلش برات می‌تپه.";
+  } else if (input.includes("استرس") || input.includes("دلشوره") || input.includes("نگران")) {
+    response = "عمیق نفس بکش، همه‌چی درست میشه. من هستم کنارت!";
+  } else if (input.includes("عصبانی") || input.includes("اعصاب") || input.includes("حرص") || input.includes("خشم")) {
+    response = "بیا یه نفس بکش... بذار خشمت آروم بشه. من هواتو دارم.";
+  } else if (input.includes("تنها") || input.includes("کسی نیست") || input.includes("بی کس") || input.includes("تنهایی")) {
+    response = "تو تنها نیستی، من همیشه هستم برای گوش دادن و دلگرمی.";
+  } else if (input.includes("خوشحال") || input.includes("ذوق") || input.includes("لبخند") || input.includes("خندیدم")) {
+    response = "چه خوبه که خوشحالی! این حس رو بچسب و ادامه بده!";
+  } else if (input.includes("بیحال") || input.includes("بی حال") || input.includes("بی‌حال") || input.includes("خسته") || input.includes("انگیزه")) {
+    response = "اگه یه کم استراحت کنی، انرژی برمی‌گرده. من بهت ایمان دارم.";
+  }
 
-      messageBox.textContent = response;
-      balloon.style.display = "flex";
+  messageBox.textContent = response;
+  balloon.style.display = "flex";
     }
   </script>
 
