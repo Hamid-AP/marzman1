@@ -82,7 +82,37 @@
   <div class="feeling-box">
     <input type="text" id="feelingInput" placeholder="الان چه حسی داری؟">
     <br>
-    <button onclick="handleFeeling()">ثبت احساس</button>
+    <button onclick=""function handleFeeling() {
+  const feeling = document.getElementById("feeling").value;
+  const messageContainer = document.getElementById("messageContainer");
+  const messageText = document.getElementById("encouragingMessage");
+
+  let message = "";
+
+  switch (feeling.toLowerCase()) {
+    case "ناراحتم":
+      message = "جناب‌خان میگه: ناراحتی طبیعیه رفیق، ولی همیشه بعد بارون، رنگین‌کمون میاد!";
+      break;
+    case "استرس دارم":
+      message = "جناب‌خان میگه: نفس عمیق بکش، تو از پسش برمیای!";
+      break;
+    case "خوشحالم":
+      message = "جناب‌خان میگه: آخ جون! خوشحالیتو با همه قسمت کن!";
+      break;
+    case "عصبانی‌ام":
+      message = "جناب‌خان میگه: چند لحظه چشماتو ببند، به چیزی که دوست داری فکر کن.";
+      break;
+    default:
+      message = "جناب‌خان میگه: ممنون که احساستو گفتی، همین که حرف زدی خیلی مهمه.";
+  }
+
+  messageText.textContent = message;
+  messageContainer.classList.remove("hidden");
+}>ثبت احساس</button>
+  </div><div id="messageContainer" class="hidden">
+  <div class="message-ball">
+    <div id="encouragingMessage" class="message-text"></div>
+  </div>
   </div>
 
   <div class="balloon" id="balloon">
