@@ -1,64 +1,120 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <meta charset="UTF-8" />
-  <title>جناب‌خان - مرز من</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>جناب‌خان - پیام دلگرم‌کننده</title>
   <style>
     body {
-      font-family: tahoma, sans-serif;
+      font-family: Tahoma, sans-serif;
+      background-color: #fffbe6;
       text-align: center;
-      padding: 20px;
-      background-color: #f8f9fa;
+      padding: 30px;
     }
-    textarea {
-      width: 90%;
+
+    h1 {
+      font-size: 36px;
+      color: #663399;
+    }
+
+    .feeling-box {
+      margin-top: 40px;
+    }
+
+    input[type="text"] {
+      padding: 12px;
+      width: 80%;
       max-width: 400px;
-      height: 120px;
-      padding: 10px;
-      font-size: 16px;
+      font-size: 20px;
+      border-radius: 12px;
       border: 2px solid #ccc;
-      border-radius: 10px;
-      margin-top: 10px;
-      resize: none;
     }
+
     button {
-      margin-top: 15px;
-      padding: 10px 25px;
-      font-size: 16px;
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 20px;
+      border-radius: 12px;
       border: none;
-      background-color: #009688;
+      background-color: #ff69b4;
       color: white;
-      border-radius: 8px;
       cursor: pointer;
     }
+
+    .balloon {
+      margin: 40px auto;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle at 70% 30%, #ff69b4, #ff1493);
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      animation: pop 0.6s ease-out forwards;
+      position: relative;
+    }
+
     .message {
-      margin-top: 20px;
-      font-weight: bold;
-      color: #444;
+      color: white;
+      font-size: 22px;
+      padding: 20px;
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      80% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+      }
     }
   </style>
 </head>
 <body>
-  <h1>دوست شنونده تو: جناب‌خان!</h1>
-  <p>امروز حالت چطوره؟ برام بنویس:</p>
-  <textarea id="feelingInput" placeholder="احساست رو بنویس..."></textarea>
-  <br>
-  <button onclick="showMessage()">ثبت احساس</button>
 
-  <div class="message" id="responseMessage"></div>
+  <h1>جناب‌خان همراه توئه!</h1>
+
+  <div class="feeling-box">
+    <input type="text" id="feelingInput" placeholder="الان چه حسی داری؟">
+    <br>
+    <button onclick="handleFeeling()">ثبت احساس</button>
+  </div>
+
+  <div class="balloon" id="balloon">
+    <div class="message" id="message"></div>
+  </div>
 
   <script>
-    function showMessage() {
-      const feeling = document.getElementById("feelingInput").value.trim();
-      const messageBox = document.getElementById("responseMessage");
-      if (feeling) {
-        messageBox.textContent = "دمت گرم! هر چی هست من پیشتم. با هم حلش می‌کنیم!";
-      } else {
-        messageBox.textContent = "اول احساست رو بنویس تا بدونم چته!";
+    function handleFeeling() {
+      const input = document.getElementById("feelingInput").value.toLowerCase();
+      const messageBox = document.getElementById("message");
+      const balloon = document.getElementById("balloon");
+
+      let response = "همیشه کنارت هستم!";
+
+      if (input.includes("ناراحت") || input.includes("غم") || input.includes("گریه")) {
+        response = "می‌دونم سخته، ولی بدون همیشه یکی هست که دلش برات می‌تپه.";
+      } else if (input.includes("استرس") || input.includes("نگران") || input.includes("دلشوره")) {
+        response = "عمیق نفس بکش، همه‌چی درست میشه. من هستم کنارت!";
+      } else if (input.includes("عصبانی") || input.includes("اعصاب") || input.includes("حرص")) {
+        response = "بیا یه نفس بکش... بذار خشمت آروم بشه. من هواتو دارم.";
+      } else if (input.includes("تنها") || input.includes("کسی نیست")) {
+        response = "تو تنها نیستی، من همیشه هستم برای گوش دادن و دلگرمی.";
+      } else if (input.includes("خوشحال") || input.includes("ذوق") || input.includes("خندیدم")) {
+        response = "چه خوبه که خوشحالی! این حس رو بچسب و ادامه بده!";
+      } else if (input.includes("بی‌حال") || input.includes("بیحال") || input.includes("انگیزه")) {
+        response = "اگه یه کم استراحت کنی، انرژی برمی‌گرده. من بهت ایمان دارم.";
       }
+
+      messageBox.textContent = response;
+      balloon.style.display = "flex";
     }
   </script>
 
-  <p><a href="index.html">بازگشت به انتخاب شخصیت</a></p>
 </body>
 </html>
