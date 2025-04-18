@@ -3,10 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <title>جناب‌خان - مرز من</title>
+  <style>
+    body {
+      font-family: tahoma, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #f8f9fa;
+    }
+    textarea {
+      width: 90%;
+      max-width: 400px;
+      height: 120px;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      margin-top: 10px;
+      resize: none;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 25px;
+      font-size: 16px;
+      border: none;
+      background-color: #009688;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .message {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #444;
+    }
+  </style>
 </head>
 <body>
   <h1>دوست شنونده تو: جناب‌خان!</h1>
-  <p>ایول که جناب‌خان رو انتخاب کردی! حالا بیا باهاش حرف بزن یا احساساتت رو ثبت کن.</p>
-  <a href="index.html">بازگشت به انتخاب شخصیت</a>
+  <p>امروز حالت چطوره؟ برام بنویس:</p>
+  <textarea id="feelingInput" placeholder="احساست رو بنویس..."></textarea>
+  <br>
+  <button onclick="showMessage()">ثبت احساس</button>
+
+  <div class="message" id="responseMessage"></div>
+
+  <script>
+    function showMessage() {
+      const feeling = document.getElementById("feelingInput").value.trim();
+      const messageBox = document.getElementById("responseMessage");
+      if (feeling) {
+        messageBox.textContent = "دمت گرم! هر چی هست من پیشتم. با هم حلش می‌کنیم!";
+      } else {
+        messageBox.textContent = "اول احساست رو بنویس تا بدونم چته!";
+      }
+    }
+  </script>
+
+  <p><a href="index.html">بازگشت به انتخاب شخصیت</a></p>
 </body>
 </html>
