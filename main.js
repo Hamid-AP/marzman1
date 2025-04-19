@@ -19,3 +19,7 @@ document.getElementById("listener").addEventListener("change", (e) => {
 
 document.getElementById("encouragement").textContent =
     encouragements[Math.floor(Math.random() * encouragements.length)];
+function restartFeeling() {
+  document.getElementById("messageContainer").classList.add("hidden");
+  document.getElementById("feeling").value = "";
+}
