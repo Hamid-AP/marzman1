@@ -58,6 +58,11 @@
       color: white;
       font-size: 22px;
       padding: 20px;
+      text-align: center;
+    }
+
+    .message-buttons {
+      margin-top: 30px;
     }
 
     @keyframes pop {
@@ -82,69 +87,51 @@
   <div class="feeling-box">
     <input type="text" id="feelingInput" placeholder="الان چه حسی داری؟">
     <br>
-    <button onclick=""function handleFeeling() {
-  const feeling = document.getElementById("feeling").value;
-  const messageContainer = document.getElementById("messageContainer");
-  const messageText = document.getElementById("encouragingMessage");
-
-  let message = "";
-
-  switch (feeling.toLowerCase()) {
-    case "ناراحتم":
-      message = "جناب‌خان میگه: ناراحتی طبیعیه رفیق، ولی همیشه بعد بارون، رنگین‌کمون میاد!";
-      break;
-    case "استرس دارم":
-      message = "جناب‌خان میگه: نفس عمیق بکش، تو از پسش برمیای!";
-      break;
-    case "خوشحالم":
-      message = "جناب‌خان میگه: آخ جون! خوشحالیتو با همه قسمت کن!";
-      break;
-    case "عصبانی‌ام":
-      message = "جناب‌خان میگه: چند لحظه چشماتو ببند، به چیزی که دوست داری فکر کن.";
-      break;
-    default:
-      message = "جناب‌خان میگه: ممنون که احساستو گفتی، همین که حرف زدی خیلی مهمه.";
-  }
-
-  messageText.textContent = message;
-  messageContainer.classList.remove("hidden");<div class="message-buttons">
-  <button onclick="location.href='index.html'">بازگشت به انتخاب شخصیت</button>
-  <button onclick="restartFeeling()">ثبت احساس جدید</button>
-  </div>}>ثبت احساس</button>
-  </div><div id="messageContainer" class="hidden">
-  <div class="message-ball">
-    <div id="encouragingMessage" class="message-text"></div>
-  </div>
+    <button onclick="handleFeeling()">ثبت احساس</button>
   </div>
 
   <div class="balloon" id="balloon">
     <div class="message" id="message"></div>
   </div>
 
-  <script> function handleFeeling() {
-  const inputRaw = document.getElementById("feelingInput").value;
-  const input = inputRaw.replace(/[^\u0600-\u06FF\s]/g, "").toLowerCase(); // حذف علامت‌ها و کوچک‌سازی
-  const messageBox = document.getElementById("message");
-  const balloon = document.getElementById("balloon");
+  <div class="message-buttons" id="afterMessage" style="display: none;">
+    <button onclick="location.href='index.html'">بازگشت به انتخاب شخصیت</button>
+    <button onclick="restartFeeling()">ثبت احساس جدید</button>
+  </div>
 
-  let response = "همیشه کنارت هستم!";
+  <script>
+    function handleFeeling() {
+      const inputRaw = document.getElementById("feelingInput").value;
+      const input = inputRaw.replace(/[^\u0600-\u06FF\s]/g, "").toLowerCase();
+      const messageBox = document.getElementById("message");
+      const balloon = document.getElementById("balloon");
+      const buttons = document.getElementById("afterMessage");
 
-  if (input.includes("ناراحت") || input.includes("غم") || input.includes("دلگیر") || input.includes("اشک") || input.includes("گریه")) {
-    response = "می‌دونم سخته، ولی بدون همیشه یکی هست که دلش برات می‌تپه.";
-  } else if (input.includes("استرس") || input.includes("دلشوره") || input.includes("نگران")) {
-    response = "عمیق نفس بکش، همه‌چی درست میشه. من هستم کنارت!";
-  } else if (input.includes("عصبانی") || input.includes("اعصاب") || input.includes("حرص") || input.includes("خشم")) {
-    response = "بیا یه نفس بکش... بذار خشمت آروم بشه. من هواتو دارم.";
-  } else if (input.includes("تنها") || input.includes("کسی نیست") || input.includes("بی کس") || input.includes("تنهایی")) {
-    response = "تو تنها نیستی، من همیشه هستم برای گوش دادن و دلگرمی.";
-  } else if (input.includes("خوشحال") || input.includes("ذوق") || input.includes("لبخند") || input.includes("خندیدم")) {
-    response = "چه خوبه که خوشحالی! این حس رو بچسب و ادامه بده!";
-  } else if (input.includes("بیحال") || input.includes("بی حال") || input.includes("بی‌حال") || input.includes("خسته") || input.includes("انگیزه")) {
-    response = "اگه یه کم استراحت کنی، انرژی برمی‌گرده. من بهت ایمان دارم.";
-  }
+      let response = "جناب‌خان میگه: همیشه کنارت هستم!";
 
-  messageBox.textContent = response;
-  balloon.style.display = "flex";
+      if (input.includes("ناراحت") || input.includes("غم") || input.includes("دلگیر") || input.includes("اشک") || input.includes("گریه")) {
+        response = "جناب‌خان میگه: می‌دونم سخته، ولی بدون همیشه یکی هست که دلش برات می‌تپه.";
+      } else if (input.includes("استرس") || input.includes("دلشوره") || input.includes("نگران")) {
+        response = "جناب‌خان میگه: عمیق نفس بکش، همه‌چی درست میشه. من هستم کنارت!";
+      } else if (input.includes("عصبانی") || input.includes("اعصاب") || input.includes("حرص") || input.includes("خشم")) {
+        response = "جناب‌خان میگه: بیا یه نفس بکش... بذار خشمت آروم بشه. من هواتو دارم.";
+      } else if (input.includes("تنها") || input.includes("کسی نیست") || input.includes("بی کس") || input.includes("تنهایی")) {
+        response = "جناب‌خان میگه: تو تنها نیستی، من همیشه هستم برای گوش دادن و دلگرمی.";
+      } else if (input.includes("خوشحال") || input.includes("ذوق") || input.includes("لبخند") || input.includes("خندیدم")) {
+        response = "جناب‌خان میگه: چه خوبه که خوشحالی! این حس رو بچسب و ادامه بده!";
+      } else if (input.includes("بیحال") || input.includes("بی حال") || input.includes("بی‌حال") || input.includes("خسته") || input.includes("انگیزه")) {
+        response = "جناب‌خان میگه: اگه یه کم استراحت کنی، انرژی برمی‌گرده. من بهت ایمان دارم.";
+      }
+
+      messageBox.textContent = response;
+      balloon.style.display = "flex";
+      buttons.style.display = "block";
+    }
+
+    function restartFeeling() {
+      document.getElementById("feelingInput").value = "";
+      document.getElementById("balloon").style.display = "none";
+      document.getElementById("afterMessage").style.display = "none";
     }
   </script>
 
