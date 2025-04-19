@@ -60,3 +60,25 @@
 body { font-family: Tahoma; direction: rtl; text-align: center; padding: 20px; }
 #listener-box { margin-top: 30px; }
 img { max-width: 200px; margin-top: 10px; }
+.message-buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.message-buttons button {
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background-color: #ff69b4;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.message-buttons button:hover {
+  transform: scale(1.05);
+}
