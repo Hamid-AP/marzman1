@@ -1,0 +1,6 @@
+document.querySelectorAll('.image').forEach(img => {
+  img.addEventListener('click', function () {
+    // اینجا می‌تونی به صفحه بعد بری یا یک بخش دیگه رو نشون بدی
+    window.location.href = 'next.html'; // مسیر صفحه بعدی رو اینجا تغییر بده
+  });
+});
