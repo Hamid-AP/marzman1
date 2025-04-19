@@ -1,65 +1,17 @@
+/* استایل‌های عمومی */
+body {
+  font-family: Tahoma;
+  direction: rtl;
+  text-align: center;
+  padding: 20px;
+}
+
+/* مخفی کردن عناصر */
 .hidden {
   display: none;
 }
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  color: #333;
-}
 
-header {
-  background-color: #4CAF50;
-  padding: 10px;
-  text-align: center;
-}
-
-h1 {
-  color: white;
-}
-
-.gallery {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-
-.image-container {
-  position: relative;
-  width: 200px;
-  height: 300px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.image-caption {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
+/* تنظیمات پیام */
 #messageContainer {
   position: fixed;
   top: 0;
@@ -96,6 +48,7 @@ footer {
   padding: 10px;
 }
 
+/* انیمیشن‌ها */
 @keyframes pop {
   0% {
     transform: scale(0.5);
@@ -115,9 +68,19 @@ footer {
     opacity: 1;
   }
 }
-body { font-family: Tahoma; direction: rtl; text-align: center; padding: 20px; }
-#listener-box { margin-top: 30px; }
-img { max-width: 200px; margin-top: 10px; }
+
+/* استایل‌های گالری شخصیت‌ها */
+#listener-box {
+  margin-top: 30px;
+}
+
+img {
+  max-width: 200px;
+  margin-top: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .message-buttons {
   margin-top: 20px;
   display: flex;
