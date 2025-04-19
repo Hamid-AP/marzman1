@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>جناب‌خان - پیام دلگرم‌کننده</title>
   <style>
     body {
@@ -11,16 +11,13 @@
       text-align: center;
       padding: 30px;
     }
-
     h1 {
       font-size: 36px;
       color: #663399;
     }
-
     .feeling-box {
       margin-top: 40px;
     }
-
     input[type="text"] {
       padding: 12px;
       width: 80%;
@@ -29,18 +26,16 @@
       border-radius: 12px;
       border: 2px solid #ccc;
     }
-
     button {
-      margin-top: 20px;
+      margin: 10px;
       padding: 12px 24px;
-      font-size: 20px;
+      font-size: 18px;
       border-radius: 12px;
       border: none;
       background-color: #ff69b4;
       color: white;
       cursor: pointer;
     }
-
     .balloon {
       margin: 40px auto;
       width: 200px;
@@ -53,18 +48,15 @@
       animation: pop 0.6s ease-out forwards;
       position: relative;
     }
-
     .message {
       color: white;
       font-size: 22px;
       padding: 20px;
       text-align: center;
     }
-
     .message-buttons {
       margin-top: 30px;
     }
-
     @keyframes pop {
       0% {
         transform: scale(0);
@@ -88,6 +80,7 @@
     <input type="text" id="feelingInput" placeholder="الان چه حسی داری؟ یا یه ایموجی بذار">
     <br>
     <button onclick="handleFeeling()">ثبت احساس</button>
+    <button onclick="showHistory()">مشاهده سابقه احساسات</button>
   </div>
 
   <div class="balloon" id="balloon">
@@ -99,67 +92,33 @@
     <button onclick="restartFeeling()">ثبت احساس جدید</button>
   </div>
 
-  <button onclick="showHistory()">مشاهده سابقه احساسات</button>
-
   <script>
     function handleFeeling() {
       const inputRaw = document.getElementById("feelingInput").value;
-      const input = inputRaw.replace(/[^\u0600-\u06FF\s\uD800-\uDFFF]/g, "").toLowerCase();
+      const input = inputRaw.replace(/[^\u0600-\u06FF\s\uD800-\uDFFF]/g, "").toLowerCase(); // حذف کاراکترهای غیر فارسی یا ایموجی
+
       const messageBox = document.getElementById("message");
       const balloon = document.getElementById("balloon");
       const buttons = document.getElementById("afterMessage");
 
       let response = "جناب‌خان میگه: همیشه کنارت هستم!";
 
-      if (
-        input.includes("ناراحت") || input.includes("غم") || input.includes("دلگیر") ||
-        input.includes("اشک") || input.includes("گریه") || input.includes("‍") || 
-        input.includes("‍‍") || input.includes("غمگین") ||
-        input.includes("") || input.includes("بد") ||
-        input.includes("") || input.includes("") ||
-        input.includes("") || input.includes("") ||
-        input.includes("‍") || input.includes("‍‍") || 
-        input.includes("") || input.includes("") || 
-        input.includes("‍") || input.includes("‍‍") ||
-        input.includes("‍") || input.includes("‍‍") ||
-        input.includes("‍") || input.includes("‍‍") ||
-        input.includes("‍") || input.includes("‍‍") ||
-        input.includes("‍") || input.includes("‍‍") ||
-        input.includes("‍") || input.includes("‍‍") ||
-        input.includes("‍") || input.includes("‍‍") ||
-        input.includes("‍") || input.includes("‍‍") ||
-        input.includes("‍") || input.includes("‍‍")
-      ) {
+      // تشخیص حالت بر اساس کلمات یا ایموجی
+      if (input.includes("ناراحت") || input.includes("غم") || input.includes("دلگیر") || input.includes("اشک") || input.includes("گریه") || input.includes("") || input.includes("")) {
         response = "جناب‌خان میگه: می‌دونم سخته، ولی بدون همیشه یکی هست که دلش برات می‌تپه.";
-      } else if (
-        input.includes("استرس") || input.includes("دلشوره") || input.includes("نگران") ||
-        input.includes("اضطراب") || input.includes("ناآرام") || input.includes("دلهره") ||
-        input.includes("‍") || input.includes("‍‍")
-      ) {
+      } else if (input.includes("استرس") || input.includes("دلشوره") || input.includes("نگران") || input.includes("") || input.includes("")) {
         response = "جناب‌خان میگه: عمیق نفس بکش، همه‌چی درست میشه. من هستم کنارت!";
-      } else if (
-        input.includes("عصبانی") || input.includes("اعصاب") || input.includes("حرص") ||
-        input.includes("خشم") || input.includes("کلافه") || input.includes("‍‍")
-      ) {
+      } else if (input.includes("عصبانی") || input.includes("اعصاب") || input.includes("حرص") || input.includes("خشم") || input.includes("")) {
         response = "جناب‌خان میگه: بیا یه نفس بکش... بذار خشمت آروم بشه. من هواتو دارم.";
-      } else if (
-        input.includes("تنها") || input.includes("کسی نیست") || input.includes("بی کس") ||
-        input.includes("تنهایی") || input.includes("‍‍")
-      ) {
+      } else if (input.includes("تنها") || input.includes("کسی نیست") || input.includes("بی کس") || input.includes("تنهایی") || input.includes("")) {
         response = "جناب‌خان میگه: تو تنها نیستی، من همیشه هستم برای گوش دادن و دلگرمی.";
-      } else if (
-        input.includes("خوشحال") || input.includes("ذوق") || input.includes("لبخند") ||
-        input.includes("خندیدم") || input.includes("شاد") || input.includes("‍‍")
-      ) {
+      } else if (input.includes("خوشحال") || input.includes("ذوق") || input.includes("لبخند") || input.includes("خندیدم") || input.includes("") || input.includes("")) {
         response = "جناب‌خان میگه: چه خوبه که خوشحالی! این حس رو بچسب و ادامه بده!";
-      } else if (
-        input.includes("بیحال") || input.includes("بی حال") || input.includes("بی‌حال") ||
-        input.includes("خسته") || input.includes("انگیزه") || input.includes("‍‍")
-      ) {
+      } else if (input.includes("بیحال") || input.includes("بی حال") || input.includes("بی‌حال") || input.includes("خسته") || input.includes("انگیزه") || input.includes("")) {
         response = "جناب‌خان میگه: اگه یه کم استراحت کنی، انرژی برمی‌گرده. من بهت ایمان دارم.";
       }
 
-      // ذخیره احساس
+      // ذخیره احساس در localStorage
       let feelings = JSON.parse(localStorage.getItem("feelingsList")) || [];
       feelings.push({ feeling: inputRaw, time: new Date().toISOString() });
       localStorage.setItem("feelingsList", JSON.stringify(feelings));
