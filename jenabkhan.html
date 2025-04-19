@@ -96,42 +96,64 @@
 </div>
 
   </div>  <script>
-    function handleFeeling() {
-      const input = document.getElementById("feelingInput").value.trim();
-      const responseBox = document.getElementById("response");
-      let response = "";
+    <script>
+  function handleFeeling() {
+    const input = document.getElementById("feelingInput").value.trim();
+    const responseBox = document.getElementById("response");
 
-      if (!input) return;
+    if (!input) return;
 
-      if (/ناراحت|غم|دلگیر|اشک|گریه|\ud83d\ude22/.test(input)) {
-        response = "می‌دونم سخته، ولی بدون همیشه یکی هست که دلش برات می‌تپه.";
-      } else if (/استرس|دلشوره|نگران|اضطراب|\ud83d\ude30/.test(input)) {
-        response = "عمیق نفس بکش، همه‌چی درست میشه. من هستم کنارت!";
-      } else if (/عصبانی|اعصاب|حرص|خشم|\ud83d\ude21/.test(input)) {
-        response = "بیا یه نفس بکش... بذار خشمت آروم بشه. من هواتو دارم.";
-      } else if (/تنها|کسی نیست|بی کس|تنهایی|\ud83d\ude1e/.test(input)) {
-        response = "تو تنها نیستی، من همیشه هستم برای گوش دادن و دلگرمی.";
-      } else if (/خوشحال|ذوق|لبخند|خندیدم|شاد|\ud83d\ude00|\ud83d\ude0a/.test(input)) {
-        response = "چه خوبه که خوشحالی! این حس رو بچسب و ادامه بده!";
-      } else if (/بیحال|بی حال|بی‌حال|خسته|انگیزه|\ud83d\ude29/.test(input)) {
-        response = "اگه یه کم استراحت کنی، انرژی برمی‌گرده. من بهت ایمان دارم.";
-      } else {
-        response = "هر احساسی که داری، من باهاتم. ممنون که به من گفتی!";
+    const feelingsMap = [
+      {
+        keywords: /(ناراحت|غم|دلگیر|اشک|گریه|😢)/,
+        response: "می‌دونم سخته، ولی بدون همیشه یکی هست که دلش برات می‌تپه."
+      },
+      {
+        keywords: /(استرس|دلشوره|نگران|اضطراب|😰)/,
+        response: "عمیق نفس بکش، همه‌چی درست میشه. من هستم کنارت!"
+      },
+      {
+        keywords: /(عصبانی|اعصاب|حرص|خشم|😡)/,
+        response: "بیا یه نفس بکش... بذار خشمت آروم بشه. من هواتو دارم."
+      },
+      {
+        keywords: /(تنها|کسی نیست|بی‌?کس|تنهایی|😞)/,
+        response: "تو تنها نیستی، من همیشه هستم برای گوش دادن و دلگرمی."
+      },
+      {
+        keywords: /(خوشحال|ذوق|لبخند|خندیدم|شاد|😀|😊)/,
+        response: "چه خوبه که خوشحالی! این حس رو بچسب و ادامه بده!"
+      },
+      {
+        keywords: /(بی‌?حال|خسته|انگیزه|😩)/,
+        response: "اگه یه کم استراحت کنی، انرژی برمی‌گرده. من بهت ایمان دارم."
       }
+    ];
 
-      responseBox.innerHTML = `
-        <img src="https://upload.wikimedia.org/wikipedia/fa/thumb/f/f5/Jenabkhan.jpg/300px-Jenabkhan.jpg" class="genab-image" alt="جناب‌خان" />
-        <p>جناب‌خان میگه: ${response}</p>
-        <div class="confetti">🎉🎀🌸</div>
-      `;
-      responseBox.style.display = "block";
+    let finalResponse = "همیشه کنارت هستم! هر چی باشه، با هم ازش رد می‌شیم.";
 
-      const historyList = document.getElementById("historyList");
-      const listItem = document.createElement("li");
-      listItem.textContent = `احساس: ${input} → ${response}`;
-      historyList.appendChild(listItem);
-
-      document.getElementById("feelingInput").value = "";
+    for (let feeling of feelingsMap) {
+      if (feeling.keywords.test(input)) {
+        finalResponse = feeling.response;
+        break;
+      }
     }
+
+    responseBox.innerHTML = `
+      <img src="https://upload.wikimedia.org/wikipedia/fa/thumb/f/f5/Jenabkhan.jpg/300px-Jenabkhan.jpg" class="genab-image" alt="جناب‌خان" />
+      جناب‌خان میگه: ${finalResponse}
+      <div class="confetti">🎉🎀🌸</div>
+    `;
+    responseBox.style.display = "block";
+
+    // ذخیره در سابقه
+    const historyList = document.getElementById("historyList");
+    const listItem = document.createElement("li");
+    listItem.textContent = `احساس: ${input} → ${finalResponse}`;
+    historyList.appendChild(listItem);
+
+    document.getElementById("feelingInput").value = "";
+  }
+</script>
   </script></body>
 </html>
