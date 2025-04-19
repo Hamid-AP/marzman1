@@ -65,6 +65,19 @@
       margin-top: 30px;
     }
 
+    #historyBox {
+      margin: 30px auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 500px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: right;
+      direction: rtl;
+      display: none;
+    }
+
     @keyframes pop {
       0% {
         transform: scale(0);
@@ -97,53 +110,42 @@
   <div class="message-buttons" id="afterMessage" style="display: none;">
     <button onclick="location.href='index.html'">بازگشت به انتخاب شخصیت</button>
     <button onclick="restartFeeling()">ثبت احساس جدید</button>
-  </div><button onclick="showHistory()">مشاهده سابقه احساسات</button>
+    <button onclick="showHistory()">مشاهده سابقه احساسات</button>
+  </div>
 
-  <script><script>
-  function handleFeeling() {
-    const inputRaw = document.getElementById("feelingInput").value;
-    const input = inputRaw.replace(/[^\u0600-\u06FF\s]/g, "").toLowerCase();
+  <div id="historyBox"></div>
+
+  <script>
     function handleFeeling() {
       const inputRaw = document.getElementById("feelingInput").value;
-      const input = inputRaw.replace(/[^\u0600-\u06FF\s]/g, "").toLowerCase();
+      const input = inputRaw.replace(/[^\u0600-\u06FF\s\uD800-\uDBFF\uDC00-\uDFFF]/g, "").toLowerCase();
       const messageBox = document.getElementById("message");
       const balloon = document.getElementById("balloon");
       const buttons = document.getElementById("afterMessage");
+      const historyBox = document.getElementById("historyBox");
+      historyBox.style.display = "none";
 
       let response = "جناب‌خان میگه: همیشه کنارت هستم!";
 
-      if (input.includes("ناراحت") || input.includes("غم") || input.includes("دلگیر") || input.includes("اشک") || input.includes("گریه")) {
+      if (input.includes("ناراحت") || input.includes("غم") || input.includes("اشک") || input.includes("گریه") || input.includes("😢") || input.includes("😭") || input.includes("😔")) {
         response = "جناب‌خان میگه: می‌دونم سخته، ولی بدون همیشه یکی هست که دلش برات می‌تپه.";
-      } else if (input.includes("استرس") || input.includes("دلشوره") || input.includes("نگران")) {
+      } else if (input.includes("استرس") || input.includes("دلشوره") || input.includes("نگران") || input.includes("😱") || input.includes("😰")) {
         response = "جناب‌خان میگه: عمیق نفس بکش، همه‌چی درست میشه. من هستم کنارت!";
-      } else if (input.includes("عصبانی") || input.includes("اعصاب") || input.includes("حرص") || input.includes("خشم")) {
+      } else if (input.includes("عصبانی") || input.includes("خشم") || input.includes("حرص") || input.includes("😡") || input.includes("🤬")) {
         response = "جناب‌خان میگه: بیا یه نفس بکش... بذار خشمت آروم بشه. من هواتو دارم.";
-      } else if (input.includes("تنها") || input.includes("کسی نیست") || input.includes("بی کس") || input.includes("تنهایی")) {
+      } else if (input.includes("تنها") || input.includes("بی‌کس") || input.includes("کسی نیست")) {
         response = "جناب‌خان میگه: تو تنها نیستی، من همیشه هستم برای گوش دادن و دلگرمی.";
-      } else if (input.includes("خوشحال") || input.includes("ذوق") || input.includes("لبخند") || input.includes("خندیدم")) {
+      } else if (input.includes("خوشحال") || input.includes("لبخند") || input.includes("خندیدم") || input.includes("🙂") || input.includes("😁") || input.includes("😂") || input.includes("😄")) {
         response = "جناب‌خان میگه: چه خوبه که خوشحالی! این حس رو بچسب و ادامه بده!";
-      } else if (input.includes("بیحال") || input.includes("بی حال") || input.includes("بی‌حال") || input.includes("خسته") || input.includes("انگیزه")) {
-        response = "جناب‌خان میگه: اگه یه کم استراحت کنی، انرژی برمی‌گرده. من بهت ایمان دارم.";
+      } else if (input.includes("خسته") || input.includes("بیحال") || input.includes("بی‌حال") || input.includes("😴") || input.includes("🥱")) {
+        response = "جناب‌خان میگه: یه کم استراحت کن، دوباره انرژی می‌گیری. من بهت ایمان دارم.";
       }
-      function showHistory() {
-  const feelings = JSON.parse(localStorage.getItem("feelingsList")) || [];
-  if (feelings.length === 0) {
-    alert("فعلاً هیچ احساسی ثبت نشده!");
-    return;
-  }
 
-  let historyText = "سابقه احساسات:\n\n";
-  feelings.forEach((item, index) => {
-    const date = new Date(item.time).toLocaleString("fa-IR");
-    historyText += `${index + 1}. ${item.feeling} - ${date}\n`;
-  });
+      // ذخیره در localStorage
+      let feelings = JSON.parse(localStorage.getItem("feelingsList")) || [];
+      feelings.push({ feeling: inputRaw, time: new Date().toISOString() });
+      localStorage.setItem("feelingsList", JSON.stringify(feelings));
 
-  alert(historyText);
-      }
-// ذخیره احساس در Local Storage
-let feelings = JSON.parse(localStorage.getItem("feelingsList")) || [];
-feelings.push({ feeling: input, time: new Date().toISOString() });
-localStorage.setItem("feelingsList", JSON.stringify(feelings));
       messageBox.textContent = response;
       balloon.style.display = "flex";
       buttons.style.display = "block";
@@ -153,6 +155,26 @@ localStorage.setItem("feelingsList", JSON.stringify(feelings));
       document.getElementById("feelingInput").value = "";
       document.getElementById("balloon").style.display = "none";
       document.getElementById("afterMessage").style.display = "none";
+      document.getElementById("historyBox").style.display = "none";
+    }
+
+    function showHistory() {
+      const feelings = JSON.parse(localStorage.getItem("feelingsList")) || [];
+      const historyBox = document.getElementById("historyBox");
+
+      if (feelings.length === 0) {
+        historyBox.innerHTML = "<p>فعلاً هیچ احساسی ثبت نشده!</p>";
+      } else {
+        let html = "<h3>سابقه احساسات:</h3><ul>";
+        feelings.forEach((item, index) => {
+          const date = new Date(item.time).toLocaleString("fa-IR");
+          html += `<li>${index + 1}. ${item.feeling} - <small>${date}</small></li>`;
+        });
+        html += "</ul>";
+        historyBox.innerHTML = html;
+      }
+
+      historyBox.style.display = "block";
     }
   </script>
 
