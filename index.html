@@ -1,45 +1,27 @@
+
 <!DOCTYPE html>
 <html lang="fa">
-<head><script src="script.js" defer></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>مرز من</title>
-  <link rel="stylesheet" href="style.css">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مرز من - جناب‌خان</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>انتخاب دوست شنونده</h1>
-  </header>
-
-  <div class="gallery">
-    <div class="image-container">
-      <a href="jenabkhan.html">
-        <img src="images/jenabkhan.jpg" alt="جناب خان" class="image">
-        <p class="image-caption">جناب خان</p>
-      </a>
+  <div class="container">
+    <h1>امروز چه احساسی داری؟</h1>
+    <div id="emoji-container">
+      <button onclick="selectFeeling('شاد', '😊')">😊</button>
+      <button onclick="selectFeeling('ناراحت', '😢')">😢</button>
+      <button onclick="selectFeeling('عصبانی', '😡')">😡</button>
+      <button onclick="selectFeeling('نگران', '😟')">😟</button>
+      <button onclick="selectFeeling('هیجان‌زده', '🤩')">🤩</button>
     </div>
-    <div class="image-container">
-      <a href="elsa.html">
-        <img src="images/elsa.jpg" alt="السا" class="image">
-        <p class="image-caption">السا</p>
-      </a>
-    </div>
-    <div class="image-container">
-      <a href="kolahghermezi.html">
-        <img src="images/kolahghermezi.jpg" alt="کلاه قرمزی" class="image">
-        <p class="image-caption">کلاه قرمزی</p>
-      </a>
-    </div>
-    <div class="image-container">
-      <a href="ladybug.html">
-        <img src="images/ladybug.jpg" alt="دختر کفشدوزکی" class="image">
-        <p class="image-caption">دختر کفشدوزکی</p>
-      </a>
-    </div>
+    <textarea id="feeling-text" placeholder="می‌خوای چیزی بنویسی؟"></textarea>
+    <button onclick="submitFeeling()">ارسال احساس</button>
+    <button onclick="goToHistory()">مشاهده سوابق احساسات</button>
+    <div id="response" class="response-box"></div>
   </div>
-
-  <footer>
-    <p>حقوق محفوظ است.</p>
-  </footer>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>سوابق احساسات</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>سوابق احساسات</h2>
+    <canvas id="feelingsChart" width="300" height="300"></canvas>
+    <ul id="historyList"></ul>
+    <button onclick="goBack()">بازگشت</button>
+  </div>
+  <script>
+    const feelings = JSON.parse(localStorage.getItem("feelings") || "[]");
+    const historyList = document.getElementById("historyList");
+    const counts = {};
+    feelings.forEach(({ feeling, timeStamp }) => {
+      const baseFeeling = feeling.split(" ")[1] || feeling;
+      counts[baseFeeling] = (counts[baseFeeling] || 0) + 1;
+
+      const li = document.createElement("li");
+      li.innerText = timeStamp + " - " + feeling;
+      historyList.appendChild(li);
+    });
+
+    const ctx = document.getElementById("feelingsChart");
+    new Chart(ctx, {
+      type: "pie",
+      data: {
+        labels: Object.keys(counts),
+        datasets: [{
+          data: Object.values(counts),
+          backgroundColor: ["#ff9999", "#66b3ff", "#99ff99", "#ffcc99", "#c2c2f0"],
+        }],
+      },
+    });
+
+    function goBack() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
